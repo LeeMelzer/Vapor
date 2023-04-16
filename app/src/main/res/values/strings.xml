@@ -1,6 +1,32 @@
 <resources>
     <string name="app_name">Vapor</string>
     <string name="vapor_title">VAPOR</string>
-    <string name="search_button">Search Games</string>
+    <string name="search_button">Store Page</string>
     <string name="account_button">My Account</string>
+    <string name="username_label">Username:</string>
+    <string name="fname_label">First Name:</string>
+    <string name="username">RealGamer</string>
+    <string name="realgamer">RealGamer</string>
+    <string name="library_button">View Library</string>
+    <string name="store_button">Store Page</string>
+    <string name="account_label">My Account</string>
+    <string name="first_name">Real</string>
+    <string name="email_label">Email:</string>
+    <string name="last_name_label">Last Name:</string>
+    <string name="lastName">Gamer</string>
+    <string name="email">real.gamer@gamers.com</string>
+    <string name="phone_number_label">Phone:</string>
+    <string name="phone_number">555-555-5555</string>
+    <string name="address_label">Address:</string>
+    <string name="address">123 Gamer St</string>
+    <string name="card_number">Card Number:</string>
+    <string name="cardNumber">1234567890</string>
+    <string name="security_code_label">Security Code:</string>
+    <string name="security_code">007</string>
+    <string name="expiration_month_label">Exp. Month:</string>
+    <string name="expiration_month">03</string>
+    <string name="expiration_year_label">Exp. Year:</string>
+    <string name="expiration_year">2027</string>
+    <string name="update_button">Update</string>
+    <string name="content_explanation">Photo showing several popular video game characters</string>
 </resources>

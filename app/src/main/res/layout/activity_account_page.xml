@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark"
+    app:layout_constraintBottom_toBottomOf="parent"
+    tools:context=".AccountPage">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/libraryButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="64dp"
+                android:layout_marginEnd="32dp"
+                android:text="@string/library_button"
+                app:layout_constraintBottom_toTopOf="@+id/myAccountLabel"
+                app:layout_constraintEnd_toStartOf="@+id/storeButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/storeButton"
+                android:layout_width="144dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="64dp"
+                android:layout_marginBottom="32dp"
+                android:text="@string/store_button"
+                app:layout_constraintBottom_toTopOf="@+id/myAccountLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/libraryButton"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/myAccountLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/account_label"
+                android:textColor="@color/text"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/username"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/libraryButton" />
+
+            <TextView
+                android:id="@+id/usernameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/username_label"
+                android:textColor="@color/text"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/username"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myAccountLabel" />
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="221dp"
+                android:layout_height="53dp"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="82dp"
+                android:autofillHints=""
+                android:backgroundTint="@color/text"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/username"
+                android:textColor="@color/text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/usernameLabel"
+                app:layout_constraintTop_toBottomOf="@+id/myAccountLabel"
+                tools:ignore="LabelFor" />
+
+            <TextView
+                android:id="@+id/fNameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/fname_label"
+                android:textColor="@color/text"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/usernameLabel"
+                app:layout_constraintTop_toBottomOf="@+id/usernameLabel" />
+
+            <EditText
+                android:id="@+id/firstName"
+                android:layout_width="222dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:autofillHints=""
+                android:backgroundTint="@color/text"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/first_name"
+                android:textColor="@color/text"
+                app:layout_constraintBaseline_toBaselineOf="@id/fNameLabel"
+                app:layout_constraintStart_toEndOf="@+id/fNameLabel"
+                tools:ignore="LabelFor" />
+
+            <TextView
+                android:id="@+id/lNameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/last_name_label"
+                android:textColor="@color/text"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/fNameLabel"
+                app:layout_constraintTop_toBottomOf="@+id/fNameLabel" />
+
+            <EditText
+                android:id="@+id/lastName"
+                android:layout_width="225dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="18dp"
+                android:autofillHints=""
+                android:backgroundTint="@color/text"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/lastName"
+                android:textColor="@color/text"
+                app:layout_constraintBaseline_toBaselineOf="@id/lNameLabel"
+                app:layout_constraintStart_toEndOf="@+id/lNameLabel"
+                tools:ignore="LabelFor,MissingConstraints" />
+
+            <TextView
+                android:id="@+id/emailLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/email_label"
+                android:textColor="@color/text"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/lNameLabel"
+                app:layout_constraintTop_toBottomOf="@+id/lNameLabel" />
+
+            <EditText
+                android:id="@+id/eAddress"
+                android:layout_width="223dp"
+                android:layout_height="51dp"
+                android:layout_marginStart="56dp"
+                android:autofillHints=""
+                android:backgroundTint="@color/text"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/email"
+                android:textColor="@color/text"
+                app:layout_constraintBaseline_toBaselineOf="@id/emailLabel"
+                app:layout_constraintStart_toEndOf="@+id/emailLabel"
+                tools:ignore="LabelFor" />
+
+            <TextView
+                android:id="@+id/phoneNumberLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/phone_number_label"
+                android:textColor="@color/text"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/emailLabel"
+                app:layout_constraintTop_toBottomOf="@+id/emailLabel" />
+
+            <EditText
+                android:id="@+id/pNumber"
+                android:layout_width="223dp"
+                android:layout_height="51dp"
+                android:layout_marginStart="50dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/phone_number"
+                android:textColor="@color/text"
+                android:backgroundTint="@color/text"
+                app:layout_constraintBaseline_toBaselineOf="@id/phoneNumberLabel"
+                app:layout_constraintStart_toEndOf="@+id/phoneNumberLabel"
+                tools:ignore="LabelFor,TextFields"
+                android:autofillHints="" />
+
+            <TextView
+                android:id="@+id/addressLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/address_label"
+                android:textSize="16sp"
+                android:textColor="@color/text"
+                app:layout_constraintStart_toStartOf="@+id/phoneNumberLabel"
+                app:layout_constraintTop_toBottomOf="@+id/phoneNumberLabel" />
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="221dp"
+                android:layout_height="51dp"
+                android:layout_marginStart="36dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/address"
+                android:textColor="@color/text"
+                android:backgroundTint="@color/text"
+                app:layout_constraintBaseline_toBaselineOf="@id/addressLabel"
+                app:layout_constraintStart_toEndOf="@+id/addressLabel"
+                android:autofillHints=""
+                tools:ignore="LabelFor" />
+
+            <TextView
+                android:id="@+id/cardNumberLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/card_number"
+                android:textSize="16sp"
+                android:textColor="@color/text"
+                app:layout_constraintStart_toStartOf="@+id/addressLabel"
+                app:layout_constraintTop_toBottomOf="@+id/addressLabel" />
+
+            <EditText
+                android:id="@+id/cardNumber"
+                android:layout_width="221dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="4dp"
+                android:autofillHints=""
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/cardNumber"
+                android:textColor="@color/text"
+                android:backgroundTint="@color/text"
+                app:layout_constraintBaseline_toBaselineOf="@id/cardNumberLabel"
+                app:layout_constraintStart_toEndOf="@+id/cardNumberLabel"
+                tools:ignore="LabelFor,TextFields" />
+
+            <TextView
+                android:id="@+id/securityCodeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/security_code_label"
+                android:textSize="16sp"
+                android:textColor="@color/text"
+                app:layout_constraintStart_toStartOf="@+id/cardNumberLabel"
+                app:layout_constraintTop_toBottomOf="@+id/cardNumberLabel" />
+
+            <EditText
+                android:id="@+id/securityCode"
+                android:layout_width="218dp"
+                android:layout_height="53dp"
+                android:layout_marginStart="4dp"
+                android:autofillHints=""
+                android:backgroundTint="@color/text"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/security_code"
+                android:textColor="@color/text"
+                app:layout_constraintBaseline_toBaselineOf="@id/securityCodeLabel"
+                app:layout_constraintStart_toEndOf="@+id/securityCodeLabel"
+                tools:ignore="LabelFor" />
+
+            <TextView
+                android:id="@+id/expirationMonthLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/expiration_month_label"
+                android:textSize="16sp"
+                android:textColor="@color/text"
+                app:layout_constraintStart_toStartOf="@+id/securityCodeLabel"
+                app:layout_constraintTop_toBottomOf="@+id/securityCodeLabel" />
+
+            <EditText
+                android:id="@+id/expirationMonth"
+                android:layout_width="220dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="20dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/expiration_month"
+                android:textColor="@color/text"
+                android:backgroundTint="@color/text"
+                app:layout_constraintBaseline_toBaselineOf="@id/expirationMonthLabel"
+                app:layout_constraintStart_toEndOf="@+id/expirationMonthLabel"
+                android:autofillHints=""
+                tools:ignore="LabelFor" />
+
+            <TextView
+                android:id="@+id/expirationYearLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/expiration_year_label"
+                android:textSize="16sp"
+                android:textColor="@color/text"
+                app:layout_constraintStart_toStartOf="@+id/expirationMonthLabel"
+                app:layout_constraintTop_toBottomOf="@+id/expirationMonthLabel" />
+
+            <EditText
+                android:id="@+id/expirationYear"
+                android:layout_width="223dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="34dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/expiration_year"
+                android:textColor="@color/text"
+                android:backgroundTint="@color/text"
+                app:layout_constraintBaseline_toBaselineOf="@id/expirationYearLabel"
+                app:layout_constraintStart_toEndOf="@+id/expirationYearLabel"
+                android:autofillHints=""
+                tools:ignore="LabelFor" />
+
+            <Button
+                android:id="@+id/updateButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/update_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/expirationYear" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
