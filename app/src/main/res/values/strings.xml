@@ -29,4 +29,6 @@
     <string name="expiration_year">2027</string>
     <string name="update_button">Update</string>
     <string name="content_explanation">Photo showing several popular video game characters</string>
+    <string name="library">Library</string>
+    <string name="hint_search_bar">Search</string>
 </resources>
