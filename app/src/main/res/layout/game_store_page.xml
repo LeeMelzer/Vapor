@@ -6,7 +6,7 @@
 
     <!-- Heading with description -->
     <TextView
-        android:text="@string/fictional_game_store"
+        android:text="@string/vapor_game_store"
         android:textSize="24sp"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"

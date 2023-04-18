@@ -29,6 +29,10 @@
     <string name="expiration_year">2027</string>
     <string name="update_button">Update</string>
     <string name="content_explanation">Photo showing several popular video game characters</string>
-    <string name="fictional_game_store">Vapor Game Store</string>
+    <string name="vapor_game_store">Vapor Game Store</string>
     <string name="browse_our_collection_of_games">Browse our collection of games</string>
+    <string name="library">Library</string>
+    <string name="hint_search_bar">Search</string>
+    <string name="fictional_game">Fictional Game</string>
+    <string name="buy">Buy</string>
 </resources>
