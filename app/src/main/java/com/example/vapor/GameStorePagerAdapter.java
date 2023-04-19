@@ -19,8 +19,8 @@ import java.util.List;
 
 public class GameStorePagerAdapter extends RecyclerView.Adapter<GameStorePagerAdapter.GameRowViewHolder> {
 
-    private List<List<Game>> mGameRows;
-    private Context mContext;
+    private final List<List<Game>> mGameRows;
+    private final Context mContext;
 
     public GameStorePagerAdapter(Context context, List<List<Game>> gameRows) {
         mContext = context;

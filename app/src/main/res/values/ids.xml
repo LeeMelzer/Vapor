@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="gameIcon" type="id" />
+
     <item name="gameIcon1" type="id" />
     <item name="gameTitle1" type="id" />
     <item name="purchaseButton1" type="id" />

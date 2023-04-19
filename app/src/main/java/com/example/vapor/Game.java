@@ -34,5 +34,5 @@ public class Game {
         mPrice = price;
     }
 
-    // You can add other methods as needed
+    // ...
 }

@@ -15,7 +15,14 @@ public class AccountPage extends AppCompatActivity {
     }
 
     public void accountToLibrary(View view) {
-        Intent intent = new Intent (AccountPage.this, AccountLibrary.class);
+        Intent intent = new Intent (this, AccountLibrary.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
+    // Navigate to the store page
+    public void accountToStore(View view) {
+        Intent intent = new Intent (this, AccountStoreActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }

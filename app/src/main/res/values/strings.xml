@@ -35,4 +35,13 @@
     <string name="hint_search_bar">Search</string>
     <string name="fictional_game">Fictional Game</string>
     <string name="buy">Buy</string>
+    <string name="home">Home</string>
+    <string name="store">Store</string>
+    <string name="account">Account</string>
+    <string name="game_title">Game Title</string>
+    <string name="description_of_the_game">Description of the game</string>
+    <string name="get_code">Get Code</string>
+    <string name="game_image">Game image</string>
+    <string name="game_description" />
+    <string name="game_icon_description" />
 </resources>
