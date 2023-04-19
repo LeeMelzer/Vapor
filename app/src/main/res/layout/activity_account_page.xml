@@ -28,6 +28,7 @@
                 android:layout_marginStart="64dp"
                 android:layout_marginEnd="32dp"
                 android:text="@string/library_button"
+                android:onClick="accountToLibrary"
                 app:layout_constraintBottom_toTopOf="@+id/myAccountLabel"
                 app:layout_constraintEnd_toStartOf="@+id/storeButton"
                 app:layout_constraintStart_toStartOf="parent"
