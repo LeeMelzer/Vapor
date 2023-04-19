@@ -26,7 +26,7 @@ public class AccountPage extends AppCompatActivity {
                 //if(id == R.id.account)
                 switch(id) {
                     case R.id.home:
-                        Intent library = new Intent(getApplicationContext(), AccountLibrary.class);
+                        Intent library = new Intent(AccountPage.this, AccountLibrary.class);
                         library.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(library);
                         overridePendingTransition(0,0);
