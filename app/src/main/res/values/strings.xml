@@ -38,5 +38,19 @@
     <string name="game_score">100%</string>
     <string name="game_price">Buy: $00.00</string>
     <string name="game_about">This is a long description which gives additional information over several paragraphs.</string>
+    <string name="vapor_game_store">Vapor Game Store</string>
+    <string name="browse_our_collection_of_games">Browse our collection of games</string>
+    <string name="fictional_game">Fictional Game</string>
+    <string name="buy">Buy</string>
+    <string name="home">Home</string>
+    <string name="store">Store</string>
+    <string name="account">Account</string>
+    <string name="description_of_the_game">Description of the game</string>
+    <string name="get_code">Get Code</string>
+    <string name="game_image">Game image</string>
+    <string name="game_icon_description" />
+
+
+    <string name="search_button" />
 
 </resources>

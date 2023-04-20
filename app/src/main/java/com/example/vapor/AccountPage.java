@@ -33,7 +33,10 @@ public class AccountPage extends AppCompatActivity {
                         return true;
 
                     case R.id.store:
-                        System.out.println("Store button pressed");
+                        Intent store = new Intent(AccountPage.this, AccountStoreActivity.class);
+                        store.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(store);
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.account:

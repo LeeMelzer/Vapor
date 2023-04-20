@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Vapor"
         tools:targetApi="31">
         <activity
+            android:name=".AccountStoreActivity"
+            android:exported="false" />
+        <activity
             android:name=".GamePage"
             android:exported="false" />
         <activity
@@ -19,11 +22,10 @@
             android:exported="false" />
         <activity
             android:name=".AccountLibrary"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

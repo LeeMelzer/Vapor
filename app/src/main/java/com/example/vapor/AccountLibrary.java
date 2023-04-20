@@ -25,11 +25,17 @@ public class AccountLibrary extends AppCompatActivity {
                 //if(id == R.id.account)
                 switch(id) {
                     case R.id.home:
-                        System.out.println("Home button pressed");
+                        Intent library = new Intent(AccountLibrary.this, AccountLibrary.class);
+                        library.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(library);
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.store:
-                        System.out.println("Store button pressed");
+                        Intent store = new Intent(AccountLibrary.this, AccountStoreActivity.class);
+                        store.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(store);
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.account:
