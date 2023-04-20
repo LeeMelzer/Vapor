@@ -3,7 +3,6 @@ package com.example.vapor;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -20,7 +19,6 @@ public class AccountLibrary extends AppCompatActivity {
 
         BottomNavigationView bnv = findViewById(R.id.bnv_navbar);
         bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
@@ -32,10 +30,6 @@ public class AccountLibrary extends AppCompatActivity {
 
                     case R.id.store:
                         System.out.println("Store button pressed");
-                        Intent intent2 = new Intent(getApplicationContext(), AccountStoreActivity.class);
-                        intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent2);
-                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.account:
