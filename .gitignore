@@ -40,6 +40,7 @@ build
 gradle
 gradlew
 gradlew.bat
+gradle.properties
 
 # Other generated files
 /.apt_generated
