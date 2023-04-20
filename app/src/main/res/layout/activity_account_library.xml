@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/dark">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnv_navbar"
@@ -25,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/library"
+        android:textColor="@color/text"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/bnv_navbar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,6 +43,8 @@
         android:ems="10"
         android:hint="@string/hint_search_bar"
         android:inputType="textFilter"
+        android:textColor="@color/text"
+        android:textColorHint="@color/text"
         android:autofillHints=""
         app:layout_constraintBottom_toTopOf="@+id/bnv_navbar"
         app:layout_constraintEnd_toEndOf="parent"
