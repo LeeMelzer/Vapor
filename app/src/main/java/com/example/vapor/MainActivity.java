@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         Button account = findViewById(R.id.accountButton);
         account.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent (MainActivity.this, AccountPage.class);
+                Intent intent = new Intent (MainActivity.this, AccountStoreActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }

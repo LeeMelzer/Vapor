@@ -40,7 +40,7 @@ public class AccountStoreActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 switch(id) {
                     case R.id.home:
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), AccountLibrary.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         overridePendingTransition(0,0);
