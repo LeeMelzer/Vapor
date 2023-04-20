@@ -9,6 +9,7 @@
     android:focusable="true"
     android:padding="16dp">
 
+    
     <ImageView
         android:id="@+id/gameImage"
         android:layout_width="96dp"

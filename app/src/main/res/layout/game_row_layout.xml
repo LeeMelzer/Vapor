@@ -5,6 +5,7 @@
     android:orientation="horizontal"
     android:padding="16dp">
 
+
     <ImageView
         android:id="@+id/gameIcon"
         android:layout_width="48dp"

@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AccountStoreActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

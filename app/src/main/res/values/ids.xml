@@ -10,4 +10,5 @@
     <item name="gameIcon3" type="id" />
     <item name="gameTitle3" type="id" />
     <item name="purchaseButton3" type="id" />
+
 </resources>
