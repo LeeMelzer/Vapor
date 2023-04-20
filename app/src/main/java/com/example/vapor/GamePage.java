@@ -6,17 +6,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class AccountPage extends AppCompatActivity {
+public class GamePage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_account_page);
+        setContentView(R.layout.activity_game_page);
 
         BottomNavigationView bnv = findViewById(R.id.bnv_navbar);
         bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -26,7 +25,7 @@ public class AccountPage extends AppCompatActivity {
                 //if(id == R.id.account)
                 switch(id) {
                     case R.id.home:
-                        Intent library = new Intent(AccountPage.this, AccountLibrary.class);
+                        Intent library = new Intent(getApplicationContext(), AccountLibrary.class);
                         library.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(library);
                         overridePendingTransition(0,0);
@@ -46,18 +45,5 @@ public class AccountPage extends AppCompatActivity {
                 return false;
             }
         });
-    }
-
-    public void accountToLibrary(View view) {
-        Intent intent = new Intent (this, AccountLibrary.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-    }
-
-    // Navigate to the store page
-    public void accountToStore(View view) {
-        Intent intent = new Intent (this, AccountStoreActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
     }
 }

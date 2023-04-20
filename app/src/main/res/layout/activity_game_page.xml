@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark"
+    android:visibility="visible"
+    tools:context=".GamePage">
+
+    <TextView
+        android:id="@+id/review_textview"
+        android:layout_width="142dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Review Score:"
+        android:textColor="@color/text"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/publisher_string_textview" />
+
+    <TextView
+        android:id="@+id/score_string_textview"
+        android:layout_width="142dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/game_score"
+        android:textColor="@color/text"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/review_textview"
+        app:layout_constraintTop_toBottomOf="@+id/publisher_string_textview" />
+
+    <TextView
+        android:id="@+id/publisher_textview"
+        android:layout_width="142dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Game Publisher:"
+        android:textColor="@color/text"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dev_textview" />
+
+    <TextView
+        android:id="@+id/publisher_string_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/game_publisher"
+        android:textColor="@color/text"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/publisher_textview"
+        app:layout_constraintTop_toBottomOf="@+id/dev_string_textview" />
+
+    <TextView
+        android:id="@+id/dev_textview"
+        android:layout_width="142dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Game Developer:"
+        android:textColor="@color/text"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date_string_textview" />
+
+    <TextView
+        android:id="@+id/dev_string_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="19dp"
+        android:text="@string/game_developer"
+        android:textColor="@color/text"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/dev_textview"
+        app:layout_constraintTop_toBottomOf="@+id/date_string_textview" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnv_navbar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="-56dp"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:menu="@menu/navigation_bar"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/title_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="57dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/game_title"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/text" />
+
+    <VideoView
+        android:id="@+id/trailer_video"
+        android:layout_width="380dp"
+        android:layout_height="208dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_textview" />
+
+    <TextView
+        android:id="@+id/description__textview"
+        android:layout_width="142dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Game Description: "
+        android:textColor="@color/text"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trailer_video" />
+
+    <TextView
+        android:id="@+id/date__textview"
+        android:layout_width="142dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Release Date: "
+        android:textColor="@color/text"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description_string_textview" />
+
+    <TextView
+        android:id="@+id/date_string_textview"
+        android:layout_width="142dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/game_release_date"
+        android:textColor="@color/text"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/date__textview"
+        app:layout_constraintTop_toBottomOf="@+id/description_string_textview" />
+
+    <TextView
+        android:id="@+id/description_string_textview"
+        android:layout_width="213dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/game_description"
+        android:textColor="@color/text"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/description__textview"
+        app:layout_constraintTop_toBottomOf="@+id/trailer_video" />
+
+    <Button
+        android:id="@+id/purchasebutton"
+        android:layout_width="138dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/game_price"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/review_textview" />
+
+    <TextView
+        android:id="@+id/about_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/game_about"
+        android:textColor="@color/text"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/purchasebutton" />
+
+    <ImageView
+        android:id="@+id/Screenshot1"
+        android:layout_width="378dp"
+        android:layout_height="208dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_textview" />
+
+    <ImageView
+        android:id="@+id/Screenshot2"
+        android:layout_width="378dp"
+        android:layout_height="208dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_textview" />
+
+    <ImageView
+        android:id="@+id/Screenshot3"
+        android:layout_width="378dp"
+        android:layout_height="208dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_textview" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
