@@ -15,7 +15,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.998"
+        app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/navigation_bar">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/library"
+        android:textColor="@color/text"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/bnv_navbar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,6 +45,8 @@
         android:drawableStart="@drawable/search_icon"
         android:drawableTint="@color/white"
         android:inputType="textFilter"
+        android:textColor="@color/text"
+        android:textColorHint="@color/text"
         android:autofillHints=""
         app:layout_constraintBottom_toTopOf="@+id/bnv_navbar"
         app:layout_constraintEnd_toEndOf="parent"

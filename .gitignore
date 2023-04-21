@@ -1,15 +1,64 @@
-*.iml
+# Built application files
+*.apk
+*.ap_
+
+# Files for the Android Studio IDE
 .gradle
 /local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/libraries
+.idea/modules.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/caches
+.idea/misc.xml
+.idea/compiler.xml
+
+# Compiled JNI libraries
+*.so
+
+# Compiled Java classes
+*.class
+
+# Generated files
+/bin
+/gen
 /build
+build
+
+# Gradle build directories
+/.gradle
+/gradle
+/gradlew
+/gradlew.bat
+
+# The above was generated, but these gradle files are in 
+# root directory not sub directory. The following addresses
+# root directory gradle files
+gradle
+gradlew
+gradlew.bat
+gradle.properties
+
+# Other generated files
+/.apt_generated
+/.android
 /captures
-.externalNativeBuild
-.cxx
+/proguard
+/outputs
+/upgrade.log
+/cxx
+
+# Ignore files that are generated or machine-specific
+.DS_Store
 local.properties
+*.log
+*.iml
+*.iws
+*.bak
+*.orig
+*.swp
+*.tmp
+.externalNativeBuild
+*~

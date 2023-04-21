@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="gameIcon1" type="id" />
+    <item name="gameTitle1" type="id" />
+    <item name="purchaseButton1" type="id" />
+    <item name="gameIcon2" type="id" />
+    <item name="gameTitle2" type="id" />
+    <item name="purchaseButton2" type="id" />
+    <item name="gameIcon3" type="id" />
+    <item name="gameTitle3" type="id" />
+    <item name="purchaseButton3" type="id" />
+</resources>

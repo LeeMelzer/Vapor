@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">Vapor</string>
     <string name="vapor_title">VAPOR</string>
-    <string name="search_button">Store Page</string>
-    <string name="account_button">My Account</string>
+    <string name="sign_in_button">Sign In</string>
     <string name="username_label">Username:</string>
     <string name="fname_label">First Name:</string>
     <string name="username">RealGamer</string>
@@ -16,7 +15,7 @@
     <string name="lastName">Gamer</string>
     <string name="email">real.gamer@gamers.com</string>
     <string name="phone_number_label">Phone:</string>
-    <string name="phone_number">555-555-5555</string>
+    <string name="phone_number">555–555–5555</string>
     <string name="address_label">Address:</string>
     <string name="address">123 Gamer St</string>
     <string name="card_number">Card Number:</string>
@@ -31,4 +30,27 @@
     <string name="content_explanation">Photo showing several popular video game characters</string>
     <string name="library">Library</string>
     <string name="hint_search_bar">Search</string>
+    <string name="game_title">Game Title</string>
+    <string name="game_description">Game Description. A quick blurb about the game.</string>
+    <string name="game_release_date">01/01/2023</string>
+    <string name="game_publisher">Game Publisher</string>
+    <string name="game_developer">Game DEV</string>
+    <string name="game_score">100%</string>
+    <string name="game_price">Buy: $00.00</string>
+    <string name="game_about">This is a long description which gives additional information over several paragraphs.</string>
+    <string name="vapor_game_store">Vapor Game Store</string>
+    <string name="browse_our_collection_of_games">Browse our collection of games</string>
+    <string name="fictional_game">Fictional Game</string>
+    <string name="buy">Buy</string>
+    <string name="home">Home</string>
+    <string name="store">Store</string>
+    <string name="account">Account</string>
+    <string name="description_of_the_game">Description of the game</string>
+    <string name="get_code">Get Code</string>
+    <string name="game_image">Game image</string>
+    <string name="game_icon_description" />
+
+
+    <string name="search_button" />
+
 </resources>

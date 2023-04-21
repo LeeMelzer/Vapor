@@ -10,19 +10,18 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class AccountLibrary extends AppCompatActivity {
+public class GamePage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_account_library);
+        setContentView(R.layout.activity_game_page);
 
         BottomNavigationView bnv = findViewById(R.id.bnv_navbar);
         bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                //if(id == R.id.account)
 
                 // Using the id, we can determine which item was selected
                 if (id == R.id.home) {
