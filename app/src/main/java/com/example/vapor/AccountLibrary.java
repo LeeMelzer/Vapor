@@ -23,29 +23,38 @@ public class AccountLibrary extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 //if(id == R.id.account)
-                switch(id) {
-                    case R.id.home:
-                        Intent library = new Intent(AccountLibrary.this, AccountLibrary.class);
-                        library.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(library);
-                        overridePendingTransition(0,0);
-                        return true;
 
-                    case R.id.store:
-                        Intent store = new Intent(AccountLibrary.this, AccountStoreActivity.class);
-                        store.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(store);
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.account:
-                        Intent intent = new Intent(getApplicationContext(), AccountPage.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                        overridePendingTransition(0,0);
-                        return true;
+                // Using the id, we can determine which item was selected
+                if (id == R.id.home) {
+                    // Create a new Intent object
+                    Intent home = new Intent(getApplicationContext(), AccountLibrary.class);
+                    // Set the flags for the Intent object
+                    home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    // Start the activity
+                    startActivity(home);
+                    overridePendingTransition(0,0);
+                    return true;
                 }
-
+                else if (id == R.id.store) {
+                    // Create a new Intent object
+                    Intent store = new Intent(getApplicationContext(), AccountStoreActivity.class);
+                    // Set the flags for the Intent object
+                    store.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    // Start the activity
+                    startActivity(store);
+                    overridePendingTransition(0,0);
+                    return true;
+                }
+                else if (id == R.id.account) {
+                    // Create a new Intent object
+                    Intent account = new Intent(getApplicationContext(), AccountPage.class);
+                    // Set the flags for the Intent object
+                    account.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    // Start the activity
+                    startActivity(account);
+                    overridePendingTransition(0,0);
+                    return true;
+                }
                 return false;
             }
         });

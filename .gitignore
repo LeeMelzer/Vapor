@@ -13,7 +13,7 @@
 .idea/assetWizardSettings.xml
 .idea/caches
 .idea/misc.xml
-.idea/gradle.xml
+.idea/compiler.xml
 
 # Compiled JNI libraries
 *.so
@@ -36,7 +36,6 @@ build
 # The above was generated, but these gradle files are in 
 # root directory not sub directory. The following addresses
 # root directory gradle files
-.gradle
 gradle
 gradlew
 gradlew.bat

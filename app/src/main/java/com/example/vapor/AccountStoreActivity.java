@@ -49,33 +49,32 @@ public class AccountStoreActivity extends AppCompatActivity {
         bnv.setOnItemSelectedListener(item -> {
             // Get the id of the selected item
             int id = item.getItemId();
-            // Switch on the id of the selected item
-            switch(id) {
-                // If the home button is selected, go to the AccountLibrary activity
-                case R.id.home:
-                    // Create a new Intent object
-                    Intent home = new Intent(getApplicationContext(), AccountLibrary.class);
-                    // Set the flags for the Intent object
-                    home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    // Start the activity
-                    startActivity(home);
-                    // Override the transition animation
-                    overridePendingTransition(0,0);
-                    return true;
-                // If the store button is selected, go to the AccountStoreActivity activity
-                case R.id.store:
-                    return true;
-                // If the account button is selected, go to the AccountPage activity
-                case R.id.account:
-                    // Create a new Intent object
-                    Intent account = new Intent(getApplicationContext(), AccountPage.class);
-                    // Set the flags for the Intent object
-                    account.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    // Start the activity
-                    startActivity(account);
-                    // Override the transition animation
-                    overridePendingTransition(0,0);
-                    return true;
+
+            // Convert below switch statement to if statement
+            if (id == R.id.home) {
+                // Create a new Intent object
+                Intent home = new Intent(getApplicationContext(), AccountLibrary.class);
+                // Set the flags for the Intent object
+                home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                // Start the activity
+                startActivity(home);
+                // Override the transition animation
+                overridePendingTransition(0,0);
+                // Return true to indicate that the item was selected
+                return true;
+            } else if (id == R.id.store) {
+                return true;
+            } else if (id == R.id.account) {
+                // Create a new Intent object
+                Intent account = new Intent(getApplicationContext(), AccountPage.class);
+                // Set the flags for the Intent object
+                account.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                // Start the activity
+                startActivity(account);
+                // Override the transition animation
+                overridePendingTransition(0,0);
+                // Return true to indicate that the item was selected
+                return true;
             }
             return false;
         });
