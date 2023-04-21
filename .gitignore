@@ -3,17 +3,17 @@
 *.ap_
 
 # Files for the Android Studio IDE
-.idea
 .gradle
 /local.properties
-/.idea/workspace.xml
-/.idea/tasks.xml
-/.idea/libraries
-/.idea/modules.xml
-/.idea/vcs.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-/.idea/caches
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/libraries
+.idea/modules.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/caches
+.idea/misc.xml
+.idea/gradle.xml
 
 # Compiled JNI libraries
 *.so
