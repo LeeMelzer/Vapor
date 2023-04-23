@@ -13,18 +13,18 @@ public class vaporDBHelper extends SQLiteOpenHelper {
     // creating table user_account
     private static final String CREATE_TABLE_ACCOUNT =
             "create table user_account (uid integer primary key autoincrement, "
-                + "username text not null, "
-                + "fName text not null, "
-                + "lName text not null, "
-                + "email text not null, "
-                + "phone text not null, "
-                + "address text not null, "
-                + "card_number text not null, "
-                + "card_code text not null, "
-                + "expiration_month text not null, "
-                + "expiration_year text not null);";
-/*
-    // creating table account_library
+                + "username text, "
+                + "fName text, "
+                + "lName text, "
+                + "email text, "
+                + "phone text, "
+                + "address text, "
+                + "card_number text, "
+                + "card_code text, "
+                + "expiration_month text, "
+                + "expiration_year text);";
+
+    // creating table library
     private static final String CREATE_TABLE_LIBRARY =
             "create table library (uid not null, gid not null, primary key(uid, gid), "
                 + "foreign key (uid) references user_account(uid) on delete cascade, "
@@ -41,7 +41,6 @@ public class vaporDBHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_USER_SIGNIN =
             "create table user_signin (uid integer not null primary key, username text not null, "
                 + "password text not null, foreign key (uid) references user_account(uid) on delete cascade);";
-*/
 
     public vaporDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -50,6 +49,9 @@ public class vaporDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_ACCOUNT);
+        db.execSQL(CREATE_TABLE_LIBRARY);
+        db.execSQL(CREATE_TABLE_GAME);
+        db.execSQL(CREATE_TABLE_USER_SIGNIN);
     }
 
     @Override
@@ -58,6 +60,9 @@ public class vaporDBHelper extends SQLiteOpenHelper {
                 "Upgrading database from version " + oldVersion + " to "
                         + newVersion + " which will destroy all old data");
         db.execSQL("DROP TABLE IF EXISTS user_account");
+        db.execSQL("DROP TABLE IF EXISTS library");
+        db.execSQL("DROP TABLE IF EXISTS game");
+        db.execSQL("DROP TABLE IF EXISTS user_signin");
         onCreate(db);
     }
 }

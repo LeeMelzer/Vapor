@@ -14,7 +14,7 @@ public class Account {
     private String expiration_year;
 
     public Account() {
-        uid = -1;
+        uid = 1;
     }
     public int getUid() {
         return uid;
