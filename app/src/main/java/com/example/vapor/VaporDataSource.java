@@ -90,8 +90,5 @@ public class VaporDataSource {
         }
         return lastUid;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 9724e20e0714c6c6044bfc59fc188bf01dc6637f
+
