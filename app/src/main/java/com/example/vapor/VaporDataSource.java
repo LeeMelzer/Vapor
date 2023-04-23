@@ -65,6 +65,9 @@ public class VaporDataSource {
             updateValues.put("expiration_year", a.getExpirationYear());
 
             didSucceed = database.update("user_account", updateValues, "uid=" + rowId, null) > 0;
+            if (didSucceed) {
+                System.out.println("Successfully updated");
+            }
         }
         catch (Exception e) {
             // will return false if there is an exception
