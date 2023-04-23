@@ -33,28 +33,27 @@ public class AccountPage extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 //if(id == R.id.account)
-                switch(id) {
-                    case R.id.home:
+                if(id == R.id.home) {
                         Intent library = new Intent(AccountPage.this, AccountLibrary.class);
                         library.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(library);
                         overridePendingTransition(0,0);
-                        return true;
+                        return true; }
 
-                    case R.id.store:
+                if(id == R.id.store) {
                         Intent store = new Intent(AccountPage.this, AccountStoreActivity.class);
                         store.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(store);
                         overridePendingTransition(0,0);
-                        return true;
+                        return true; }
 
-                    case R.id.account:
+                if(id == R.id.account) {
                         Intent account = new Intent(getApplicationContext(), AccountPage.class);
                         account.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(account);
                         overridePendingTransition(0,0);
-                        return true;
-                }
+                        return true; }
+
                 return false;
             }
         });
