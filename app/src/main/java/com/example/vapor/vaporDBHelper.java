@@ -1,0 +1,63 @@
+package com.example.vapor;
+
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+public class vaporDBHelper extends SQLiteOpenHelper {
+    private static final String DATABASE_NAME = "vapor.db";
+    private static final int DATABASE_VERSION = 1;
+
+    // SQL statements to create database
+    // creating table user_account
+    private static final String CREATE_TABLE_ACCOUNT =
+            "create table user_account (uid integer primary key autoincrement, "
+                + "username text not null, "
+                + "fName text not null, "
+                + "lName text not null, "
+                + "email text not null, "
+                + "phone text not null, "
+                + "address text not null, "
+                + "card_number text not null, "
+                + "card_code text not null, "
+                + "expiration_month text not null, "
+                + "expiration_year text not null);";
+/*
+    // creating table account_library
+    private static final String CREATE_TABLE_LIBRARY =
+            "create table library (uid not null, gid not null, primary key(uid, gid), "
+                + "foreign key (uid) references user_account(uid) on delete cascade, "
+                + "foreign key (gid) references game(gid) on delete cascade);";
+
+    // creating table game
+    private static final String CREATE_TABLE_GAME =
+            "create table game (gid integer not null primary key autoincrement, "
+                + "video text, img1 text, img2 text, img3 text, title text, description text, "
+                + "long_desc text, release_date text, developer text, publisher text, total_review integer, "
+                + "p_review integer);";
+
+    // creating table user_signin
+    private static final String CREATE_TABLE_USER_SIGNIN =
+            "create table user_signin (uid integer not null primary key, username text not null, "
+                + "password text not null, foreign key (uid) references user_account(uid) on delete cascade);";
+*/
+
+    public vaporDBHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL(CREATE_TABLE_ACCOUNT);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        Log.w(vaporDBHelper.class.getName(),
+                "Upgrading database from version " + oldVersion + " to "
+                        + newVersion + " which will destroy all old data");
+        db.execSQL("DROP TABLE IF EXISTS user_account");
+        onCreate(db);
+    }
+}
