@@ -52,7 +52,7 @@ public class vaporDBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_LIBRARY);
         db.execSQL(CREATE_TABLE_GAME);
         db.execSQL(CREATE_TABLE_USER_SIGNIN);
-        db.execSQL("INSERT INTO user_account VALUES (1, 'RealGamer', 'Real', 'Gamer', 'real.gamer@gamers.com', '555-555-5555', '123 Gamer St', '1234567890', '007', '03', '2027')");
+        db.execSQL("INSERT INTO user_account VALUES (1, 'RealGamer', 'Real', 'Gamer', 'real.gamer@gamers.com', '555-555-5555', '123 Gamer St', '1234567890', '007', '03', '2027');");
     }
 
     @Override
