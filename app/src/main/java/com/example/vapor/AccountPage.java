@@ -3,6 +3,7 @@ package com.example.vapor;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,6 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -23,7 +26,16 @@ public class AccountPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_page);
-        currentAccount = new Account();
+        initAccount(1);
+        /*
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            initAccount(extras.getInt("uid"));
+        }
+        else {
+            currentAccount = new Account();
+        }
+        */
         initTextChangedEvents();
         initSaveButton();
 
@@ -32,9 +44,10 @@ public class AccountPage extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                //if(id == R.id.account)
                 if(id == R.id.home) {
                         Intent library = new Intent(AccountPage.this, AccountLibrary.class);
+                        // Add this line to pass uid
+                        library.putExtra("uid", 1);
                         library.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(library);
                         overridePendingTransition(0,0);
@@ -42,6 +55,8 @@ public class AccountPage extends AppCompatActivity {
 
                 if(id == R.id.store) {
                         Intent store = new Intent(AccountPage.this, AccountStoreActivity.class);
+                        // Add this line to pass uid
+                        store.putExtra("uid", 1);
                         store.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(store);
                         overridePendingTransition(0,0);
@@ -49,6 +64,8 @@ public class AccountPage extends AppCompatActivity {
 
                 if(id == R.id.account) {
                         Intent account = new Intent(getApplicationContext(), AccountPage.class);
+                        // Add this line to pass uid
+                        account.putExtra("uid", 1);
                         account.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(account);
                         overridePendingTransition(0,0);
@@ -225,6 +242,7 @@ public class AccountPage extends AppCompatActivity {
         Button saveButton = findViewById(R.id.updateButton);
         saveButton.setOnClickListener(new View.OnClickListener() {
 
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
                 boolean wasSuccessful;
@@ -238,6 +256,10 @@ public class AccountPage extends AppCompatActivity {
                     }
                     else {
                         wasSuccessful = ds.updateUser(currentAccount);
+                        if (wasSuccessful) {
+                            TextView alert = findViewById(R.id.updateAlert);
+                            alert.setText("Update Successful!");
+                        }
                     }
                     ds.close();
                 }
@@ -246,5 +268,40 @@ public class AccountPage extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void initAccount(int uid) {
+        VaporDataSource ds = new VaporDataSource(AccountPage.this);
+        try {
+            ds.open();
+            currentAccount = ds.getUserAccount(uid);
+            ds.close();
+        }
+        catch (Exception e) {
+            Toast.makeText(this, "Load User Failed", Toast.LENGTH_LONG).show();
+        }
+
+        EditText editUsername = findViewById(R.id.username);
+        EditText editFirstName = findViewById(R.id.firstName);
+        EditText editLastName = findViewById(R.id.lastName);
+        EditText editEmail = findViewById(R.id.eAddress);
+        EditText editPhone = findViewById(R.id.pNumber);
+        EditText editAddress = findViewById(R.id.address);
+        EditText editCardNumber = findViewById(R.id.cardNumber);
+        EditText editSecurityCode = findViewById(R.id.securityCode);
+        EditText editExpirationMonth = findViewById(R.id.expirationMonth);
+        EditText editExpirationYear = findViewById(R.id.expirationYear);
+
+        editUsername.setText(currentAccount.getUsername());
+        editFirstName.setText(currentAccount.getFName());
+        editLastName.setText(currentAccount.getLName());
+        editEmail.setText(currentAccount.getEmail());
+        editPhone.setText(currentAccount.getPhone());
+        editAddress.setText(currentAccount.getAddress());
+        editCardNumber.setText(currentAccount.getCardNumber());
+        editSecurityCode.setText(currentAccount.getCardCode());
+        editExpirationMonth.setText(currentAccount.getExpirationMonth());
+        editExpirationYear.setText(currentAccount.getExpirationYear());
+
     }
 }

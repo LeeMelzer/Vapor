@@ -90,5 +90,28 @@ public class VaporDataSource {
         }
         return lastUid;
     }
+
+    public Account getUserAccount(int uid) {
+        Account account = new Account();
+        String query = "SELECT * FROM user_account WHERE uid =" + uid;
+        Cursor cursor = database.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            account.setUid(cursor.getInt(0));
+            account.setUsername(cursor.getString(1));
+            account.setFName(cursor.getString(2));
+            account.setLName(cursor.getString(3));
+            account.setEmail(cursor.getString(4));
+            account.setPhone(cursor.getString(5));
+            account.setAddress(cursor.getString(6));
+            account.setCardNumber(cursor.getString(7));
+            account.setCardCode(cursor.getString(8));
+            account.setExpirationMonth(cursor.getString(9));
+            account.setExpirationYear(cursor.getString(10));
+
+            cursor.close();
+        }
+        return account;
+    }
 }
 
