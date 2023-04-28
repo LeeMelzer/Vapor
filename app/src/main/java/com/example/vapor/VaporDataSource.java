@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+
 public class VaporDataSource {
 
     private SQLiteDatabase database;
@@ -112,6 +114,31 @@ public class VaporDataSource {
             cursor.close();
         }
         return account;
+    }
+
+    public ArrayList<LibraryGame> buildLibrary(int uid) {
+        ArrayList<Integer> gids = new ArrayList<>();
+        String query = "SELECT gid FROM account_library WHERE uid =" + Integer.toString(uid);
+        Cursor idCursor = database.rawQuery(query, null);
+        while(idCursor.moveToFirst()) { gids.add(idCursor.getInt(1)); }
+
+        return getGames(gids);
+    }
+
+    public ArrayList<LibraryGame> getGames(ArrayList<Integer> gids) {
+        ArrayList<LibraryGame> games = new ArrayList<>();
+        for(int gid : gids)
+        {
+            String query = "SELECT img1, title FROM game WHERE gid= " + Integer.toString(gid);
+            Cursor gameCursor = database.rawQuery(query, null);
+
+            if(gameCursor.moveToFirst()) {
+                LibraryGame game = new LibraryGame(gameCursor.getString(1),gameCursor.getString(4));
+                games.add(game);
+            }
+        }
+
+        return games;
     }
 }
 

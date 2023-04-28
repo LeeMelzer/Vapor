@@ -4,14 +4,22 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
 public class AccountLibrary extends AppCompatActivity {
 
+    private ArrayList<LibraryGame> library;
+    private ListView libraryView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,5 +66,18 @@ public class AccountLibrary extends AppCompatActivity {
                 return false;
             }
         });
+
+        library = new ArrayList<>();
+        libraryView = findViewById(R.id.lv_library);
+        initListView();
+        setGameAdapter();
+    }
+
+    private void setGameAdapter() {
+        LibraryAdapter la = new LibraryAdapter(getApplicationContext(), library);
+        libraryView.setAdapter(la);
+    }
+
+    private void initListView() {
     }
 }

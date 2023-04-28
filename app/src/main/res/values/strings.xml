@@ -52,5 +52,6 @@
 
 
     <string name="search_button" />
+    <string name="view_store">VIEW IN STORE</string>
 
 </resources>
