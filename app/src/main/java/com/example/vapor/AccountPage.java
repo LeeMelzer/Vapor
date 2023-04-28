@@ -40,6 +40,7 @@ public class AccountPage extends AppCompatActivity {
         initSaveButton();
 
         BottomNavigationView bnv = findViewById(R.id.bnv_navbar);
+        bnv.setSelectedItemId(R.id.account);
         bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
