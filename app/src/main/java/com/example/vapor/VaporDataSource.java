@@ -118,25 +118,37 @@ public class VaporDataSource {
 
     public ArrayList<LibraryGame> buildLibrary(int uid) {
         ArrayList<Integer> gids = new ArrayList<>();
-        String query = "SELECT gid FROM account_library WHERE uid =" + Integer.toString(uid);
+        String query = "SELECT 'gid' FROM library WHERE uid = " + Integer.toString(uid);
         Cursor idCursor = database.rawQuery(query, null);
-        while(idCursor.moveToFirst()) { gids.add(idCursor.getInt(1)); }
+        boolean items = idCursor.moveToFirst();
+        while(items) {
+            int gameID = idCursor.getInt(0) + 1;
+            gids.add(gameID);
+            items = idCursor.moveToNext();
+        }
 
-        return getGames(gids);
+        idCursor.close();
+
+        return gids.size() == 0 ? new ArrayList<>() : getGames(gids);
     }
 
-    public ArrayList<LibraryGame> getGames(ArrayList<Integer> gids) {
+    private ArrayList<LibraryGame> getGames(ArrayList<Integer> gids) {
         ArrayList<LibraryGame> games = new ArrayList<>();
-        for(int gid : gids)
+        for(Integer gid : gids)
         {
-            String query = "SELECT img1, title FROM game WHERE gid= " + Integer.toString(gid);
+            String query = "SELECT 'img1', 'title' FROM game WHERE gid= " + Integer.toString(gid);
             Cursor gameCursor = database.rawQuery(query, null);
 
             if(gameCursor.moveToFirst()) {
-                LibraryGame game = new LibraryGame(gameCursor.getString(1),gameCursor.getString(4));
+                String img = gameCursor.getString(0);
+                String title = gameCursor.getString(1);
+                LibraryGame game = new LibraryGame(img, title);
                 games.add(game);
             }
+
+            gameCursor.close();
         }
+
 
         return games;
     }

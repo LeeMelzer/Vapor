@@ -4,20 +4,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 public class AccountLibrary extends AppCompatActivity {
-
+    private VaporDataSource db;
     private ArrayList<LibraryGame> library;
     private ListView libraryView;
     @Override
@@ -38,6 +35,7 @@ public class AccountLibrary extends AppCompatActivity {
                     Intent home = new Intent(getApplicationContext(), AccountLibrary.class);
                     // Set the flags for the Intent object
                     home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    home.putExtra("uid", 1);
                     // Start the activity
                     startActivity(home);
                     overridePendingTransition(0,0);
@@ -48,6 +46,7 @@ public class AccountLibrary extends AppCompatActivity {
                     Intent store = new Intent(getApplicationContext(), AccountStoreActivity.class);
                     // Set the flags for the Intent object
                     store.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    store.putExtra("uid", 1);
                     // Start the activity
                     startActivity(store);
                     overridePendingTransition(0,0);
@@ -58,6 +57,7 @@ public class AccountLibrary extends AppCompatActivity {
                     Intent account = new Intent(getApplicationContext(), AccountPage.class);
                     // Set the flags for the Intent object
                     account.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    account.putExtra("uid", 1);
                     // Start the activity
                     startActivity(account);
                     overridePendingTransition(0,0);
@@ -67,17 +67,20 @@ public class AccountLibrary extends AppCompatActivity {
             }
         });
 
-        library = new ArrayList<>();
-        libraryView = findViewById(R.id.lv_library);
-        initListView();
-        setGameAdapter();
-    }
+        db = new VaporDataSource(AccountLibrary.this);
+        try {
+            Bundle extras = getIntent().getExtras();
+            int uid = extras.getInt("uid");
+            db.open();
+            library = db.buildLibrary(uid);
+            db.close();
 
-    private void setGameAdapter() {
-        LibraryAdapter la = new LibraryAdapter(getApplicationContext(), library);
-        libraryView.setAdapter(la);
-    }
+            //ArrayAdapter<LibraryGame> adapter = new ArrayAdapter<>(AccountLibrary.this, R.layout.game_library_item, library);
+            //libraryView.setAdapter(adapter);
 
-    private void initListView() {
+            LibraryAdapter la = new LibraryAdapter(getApplicationContext(), library);
+            for(LibraryGame g : this.library) la.add(g);
+            libraryView.setAdapter(la);
+        } catch(Exception e) { e.printStackTrace(); }
     }
 }
