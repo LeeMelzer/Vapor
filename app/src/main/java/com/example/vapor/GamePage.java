@@ -149,7 +149,7 @@ public class GamePage extends AppCompatActivity {
                 if (wasSuccessful) {
                     buyButton.setText("Added to Library");
                 } else {
-                    buyButton.setText("Failed");
+                    buyButton.setText("Owned");
                 }
             }
         });
