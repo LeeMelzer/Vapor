@@ -151,5 +151,48 @@ public class VaporDataSource {
 
         return games;
     }
+
+    public GamePageOBJ getGame(int gid) {
+        GamePageOBJ game = new GamePageOBJ();
+        String query = "SELECT * FROM game WHERE gid =" + gid;
+        Cursor cursor = database.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+
+            game.setGid(cursor.getInt(0));
+            game.setVideo(cursor.getString(1));
+            game.setScreenshot1(cursor.getString(2));
+            game.setScreenshot2(cursor.getString(3));
+            game.setScreenshot3(cursor.getString(4));
+            game.setTitle(cursor.getString(5));
+            game.setDesc(cursor.getString(6));
+            game.setAbout(cursor.getString(7));
+            game.setDate(cursor.getString(8));
+            game.setDeveloper(cursor.getString(9));
+            game.setPublisher(cursor.getString(10));
+            game.setTotalreview(cursor.getInt(11));
+            game.setPreview(cursor.getInt(12));
+
+            cursor.close();
+        }
+        return game;
+    }
+
+    //db.execSQL("INSERT INTO library VALUES (1,1);");
+    public boolean insertLibrary(int uid, int gid) {
+        boolean didSucceed = false;
+        try {
+            ContentValues initialValues = new ContentValues();
+
+            initialValues.put("uid", uid);
+            initialValues.put("gid", gid);
+
+            didSucceed = database.insert("library", null, initialValues) > 0;
+        }
+        catch (Exception e) {
+            // will return false if there is an exception
+        }
+        return didSucceed;
+    }
 }
 
