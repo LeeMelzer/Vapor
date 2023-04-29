@@ -118,25 +118,25 @@ public class VaporDataSource {
 
     public ArrayList<LibraryGame> buildLibrary(int uid) {
         ArrayList<Integer> gids = new ArrayList<>();
-        String query = "SELECT 'gid' FROM library WHERE uid = " + Integer.toString(uid);
+        String query = "SELECT * FROM library WHERE uid = " + uid;
         Cursor idCursor = database.rawQuery(query, null);
         boolean items = idCursor.moveToFirst();
         while(items) {
-            int gameID = idCursor.getInt(0) + 1;
+            int gameID = idCursor.getInt(1);
             gids.add(gameID);
             items = idCursor.moveToNext();
         }
 
         idCursor.close();
 
-        return gids.size() == 0 ? new ArrayList<>() : getGames(gids);
+        return getGames(gids);
     }
 
     private ArrayList<LibraryGame> getGames(ArrayList<Integer> gids) {
         ArrayList<LibraryGame> games = new ArrayList<>();
         for(Integer gid : gids)
         {
-            String query = "SELECT 'img1', 'title' FROM game WHERE gid= " + Integer.toString(gid);
+            String query = "SELECT img1, title FROM game WHERE gid= " + gid;
             Cursor gameCursor = database.rawQuery(query, null);
 
             if(gameCursor.moveToFirst()) {
@@ -148,7 +148,6 @@ public class VaporDataSource {
 
             gameCursor.close();
         }
-
 
         return games;
     }

@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     android:background="@color/dark">
 
+    <ListView
+        android:id="@+id/lv_library"
+        android:layout_width="409dp"
+        android:layout_height="609dp"
+        android:layout_marginEnd="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/bnv_navbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_library" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnv_navbar"
         android:layout_width="wrap_content"
@@ -54,16 +64,5 @@
         app:layout_constraintStart_toEndOf="@+id/label_library"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
-
-    <ListView
-        android:id="@+id/lv_library"
-        android:layout_width="409dp"
-        android:layout_height="609dp"
-        android:layout_marginEnd="2dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/bnv_navbar"
-        app:layout_constraintTop_toBottomOf="@+id/label_library"
-        tools:layout_editor_absoluteY="65dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

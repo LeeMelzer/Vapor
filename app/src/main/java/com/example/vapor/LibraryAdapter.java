@@ -1,6 +1,7 @@
 package com.example.vapor;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import java.util.List;
 public class LibraryAdapter extends ArrayAdapter<LibraryGame> {
 
     public LibraryAdapter(Context context, List<LibraryGame> games) {
+
         super(context, 0, games);
     }
 
@@ -28,17 +30,8 @@ public class LibraryAdapter extends ArrayAdapter<LibraryGame> {
 
         ImageView image = convertView.findViewById(R.id.gameImageLibrary);
         TextView title = convertView.findViewById(R.id.gameTitleLibrary);
-        Button view = convertView.findViewById(R.id.gameButtonLibrary);
-        //image.setImageResource(game.getIconResourceId());
-        //image.setImageURI(game.getImageURL());
-        image.setImageResource(R.drawable.missing_icon); //placeholder for the time being
+        image.setImageURI(Uri.parse(game.getImageURL()));
         title.setText(game.getTitle());
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
 
         return convertView;
     }

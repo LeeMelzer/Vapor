@@ -13,11 +13,11 @@ public class LibraryGame {
     }
 
     public String getImageURL() {
-        return imageURL;
+        return this.imageURL;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public void setImageURL(String imageURL) {

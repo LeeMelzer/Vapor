@@ -6,12 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AccountLibrary extends AppCompatActivity {
     private VaporDataSource db;
@@ -21,7 +23,6 @@ public class AccountLibrary extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_library);
-
         BottomNavigationView bnv = findViewById(R.id.bnv_navbar);
         bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -74,13 +75,16 @@ public class AccountLibrary extends AppCompatActivity {
             db.open();
             library = db.buildLibrary(uid);
             db.close();
+            ArrayList<String> tester = new ArrayList<>();
+            for(LibraryGame game : library) { tester.add(game.getTitle()); }
 
-            //ArrayAdapter<LibraryGame> adapter = new ArrayAdapter<>(AccountLibrary.this, R.layout.game_library_item, library);
-            //libraryView.setAdapter(adapter);
-
-            LibraryAdapter la = new LibraryAdapter(getApplicationContext(), library);
-            for(LibraryGame g : this.library) la.add(g);
-            libraryView.setAdapter(la);
+            //ArrayList<String> test = new ArrayList<>();
+            //test.add("a"); test.add("b"); test.add("c");
+            ArrayAdapter<String> testAdapter = new ArrayAdapter<>(this, R.layout.test, tester);
+            //LibraryAdapter la = new LibraryAdapter(AccountLibrary.this, library);
+            //libraryView.setAdapter(la);
+            libraryView = findViewById(R.id.lv_library);
+            libraryView.setAdapter(testAdapter);
         } catch(Exception e) { e.printStackTrace(); }
     }
 }
