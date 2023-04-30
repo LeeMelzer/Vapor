@@ -1,20 +1,46 @@
 package com.example.vapor;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
+import android.util.Log;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class VaporDataSource {
-
+    private final ArrayList<byte[]> imageList;
+    private final ArrayList<String> titleList;
+    private final ArrayList<String> descriptionList;
     private SQLiteDatabase database;
     private vaporDBHelper dbHelper;
+    private AppCompatActivity activity;
 
     public VaporDataSource(Context context) {
         dbHelper = new vaporDBHelper(context);
+        open();
+        dbHelper.onUpgrade(database, 1, 1);
+        imageList = new ArrayList<>();
+        titleList = new ArrayList<>();
+        descriptionList = new ArrayList<>();
+        activity = new AppCompatActivity();
     }
 
     public void open() throws SQLException {
@@ -148,7 +174,103 @@ public class VaporDataSource {
 
             gameCursor.close();
         }
+        return games;
+    }
 
+    /**
+     * Gets all the games in the database
+     * @return ArrayList of all the games
+     */
+    public ArrayList<Integer> getAllGIDs() {
+        // ArrayList of all the gids
+        ArrayList<Integer> gids = new ArrayList<>();
+
+        // Get the database
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        // Query to get all the gids
+        String selectQuery = "SELECT gid FROM games";
+
+        // Cursor to iterate through the database
+        Cursor cursor = null;
+        try {
+            // Execute the query
+            cursor = db.rawQuery(selectQuery, null);
+
+            // Iterate through the database and add the gids to the arraylist
+            if (cursor.moveToFirst()) {
+                do {
+                    // Get the gid and add it to the arraylist
+                    gids.add(cursor.getInt(0));
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            // Log the error
+            Log.e("getAllGIDs", "Error getting all gids: " + e.getMessage());
+        } finally {
+            // Close the cursor and database
+            if (cursor != null) {
+                cursor.close();
+            }
+            dbHelper.close();
+        }
+        // Return the arraylist of gids
+        return gids;
+    }
+
+    /**
+     * Gets all the games in the database
+     * @return ArrayList of all the games
+     */
+    public ArrayList<AccountStoreActivity.GameListItem> getStoreGames(ArrayList<Integer> gids) {
+        // ArrayList of all the gids
+        ArrayList<AccountStoreActivity.GameListItem> games = new ArrayList<>();
+
+        // Get the database
+        database = dbHelper.getReadableDatabase();
+
+        // Query to get all the gids
+        String selectQuery = "SELECT gid, image, title, description FROM games WHERE gid = ?";
+
+        // Cursor to iterate through the database
+        Cursor cursor = null;
+        try {
+            // Execute the query
+            SQLiteStatement statement = database.compileStatement(selectQuery);
+            // Iterate through the database and add the gids to the arraylist
+            for (int i = 0; i < gids.size(); i++) {
+                // Get the gid and add it to the arraylist
+                statement.bindLong(1, gids.get(i));
+                // Execute the query
+                cursor = database.query("games", new String[]{"gid", "image", "title",
+                                "description"}, "gid = ?",
+                        new String[]{String.valueOf(gids.get(i))},
+                        null, null, null, null);
+                // Iterate through the database and add the gids to the arraylist
+                if (cursor.moveToFirst()) {
+                    do {
+                        // Get the gid and assign it to int gid
+                        @SuppressLint("Range") int gid = cursor.getInt(cursor.getColumnIndex("gid"));
+                        // Get the image details and assign it to String image
+                        @SuppressLint("Range") String image = cursor.getString(cursor.getColumnIndex("image"));
+                        // Get the title and assign it to String title
+                        @SuppressLint("Range") String title = cursor.getString(cursor.getColumnIndex("title"));
+                        // Get the description and assign it to String description
+                        @SuppressLint("Range") String description = cursor.getString(cursor.getColumnIndex("description"));
+                        // Add values to the arraylist
+                        games.add(new AccountStoreActivity.GameListItem(gid, image, title, description));
+                    } while (cursor.moveToNext());
+                }
+            }
+        } catch (Exception e) {
+            // Log the error
+            e.printStackTrace();
+        } finally {
+            // Close the cursor and database
+            if (cursor != null) cursor.close();
+            database.close();
+        }
+        // Return the arraylist of gids
         return games;
     }
 
@@ -193,6 +315,18 @@ public class VaporDataSource {
             // will return false if there is an exception
         }
         return didSucceed;
+    }
+
+    public ArrayList<byte[]> getImageList() {
+        return imageList;
+    }
+
+    public ArrayList<String> getTitleList() {
+        return titleList;
+    }
+
+    public ArrayList<String> getDescriptionList() {
+        return descriptionList;
     }
 }
 

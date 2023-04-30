@@ -4,6 +4,9 @@ package com.example.vapor;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +58,7 @@ public class AccountStoreActivity extends AppCompatActivity {
             if (id == R.id.home) {
                 // Create a new Intent object
                 Intent home = new Intent(getApplicationContext(), AccountLibrary.class);
+                home.putExtra("uid", 1);
                 // Set the flags for the Intent object
                 home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 // Start the activity
@@ -67,6 +72,7 @@ public class AccountStoreActivity extends AppCompatActivity {
             } else if (id == R.id.account) {
                 // Create a new Intent object
                 Intent account = new Intent(getApplicationContext(), AccountPage.class);
+                account.putExtra("uid", 1);
                 // Set the flags for the Intent object
                 account.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 // Start the activity
@@ -88,15 +94,17 @@ public class AccountStoreActivity extends AppCompatActivity {
         // Set the layout manager for the RecyclerView
         gamesListRecyclerView.setLayoutManager(layoutManager);
 
+        ArrayList<Integer> gidList = new ArrayList<>();
+
         // Create a list of GameListItem objects
         List<GameListItem> gameListItems = new ArrayList<>();
+        VaporDataSource dataSource = new VaporDataSource(this);
 
-        // Add some sample game data
-        gameListItems.add(new GameListItem(R.drawable.masked_bandits, "Game 1", "Description of Game 1"));
-        gameListItems.add(new GameListItem(R.drawable.masked_bandits, "Game 2", "Description of Game 2"));
-        gameListItems.add(new GameListItem(R.drawable.masked_bandits, "Game 3", "Description of Game 3"));
-        gameListItems.add(new GameListItem(R.drawable.masked_bandits, "Game 4", "Description of Game 4"));
-        gameListItems.add(new GameListItem(R.drawable.masked_bandits, "Game 5", "Description of Game 5"));
+        // get all gids from the database
+        gidList = dataSource.getAllGIDs();
+
+        // get games from database
+        gameListItems = dataSource.getStoreGames(gidList);
 
         // Create a new GameListAdapter object
         GameListAdapter gameListAdapter = new GameListAdapter(gameListItems);
@@ -148,7 +156,7 @@ public class AccountStoreActivity extends AppCompatActivity {
             GameListItem gameListItem = gameListItems.get(position);
 
             // Set the image, title, and description of the game
-            holder.gameImage.setImageResource(gameListItem.getImageResourceId());
+            new DownloadImageFromInternet((ImageView) holder.gameImage).execute(gameListItem.getImageResource());
 
             // Set the title and description of the game
             holder.gameTitle.setText(gameListItem.getTitle());
@@ -160,6 +168,9 @@ public class AccountStoreActivity extends AppCompatActivity {
             holder.gameButton.setOnClickListener(v -> {
                 // Navigate to the game page
                 Intent game = new Intent(getApplicationContext(), GamePage.class);
+                // Pass the gid of the game to the game page
+                game.putExtra("gid", gameListItem.getGid());
+                game.putExtra("uid", 1);
                 // Clear the back stack so that the user cannot navigate back to the store
                 game.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 // Start the game page activity
@@ -181,7 +192,7 @@ public class AccountStoreActivity extends AppCompatActivity {
     /**
      * GameViewHolder class to hold the views for a single game item in the RecyclerView.
      */
-    private static class GameViewHolder extends RecyclerView.ViewHolder {
+    private class GameViewHolder extends RecyclerView.ViewHolder {
 
         private final ImageView gameImage; // The image of the game
         private final TextView gameTitle; // The title of the game
@@ -207,29 +218,40 @@ public class AccountStoreActivity extends AppCompatActivity {
     /**
      * GameListItem class to hold the data for a single game item in the RecyclerView.
      */
-    private static class GameListItem {
-        private final int imageResourceId; // The image resource ID of the game
+    public static class GameListItem {
+        private final int gid; // The game ID
+        private final String imageResource; // The image resource ID of the game
         private final String title; // The title of the game
         private final String description; // The description of the game
 
         /**
          * Create a new GameListItem object.
-         * @param imageResourceId The image resource ID of the game.
+         * @param gid The game ID.
+         * @param imageResource Image that is downloaded from the internet via DownloadImageFromInternet.
          * @param title The title of the game.
          * @param description The description of the game.
          */
-        public GameListItem(int imageResourceId, String title, String description) {
-            this.imageResourceId = imageResourceId;
+        public GameListItem(int gid, String imageResource, String title, String description) {
+            this.gid = gid;
+            this.imageResource = imageResource;
             this.title = title;
             this.description = description;
+        }
+
+        /**
+         * Get the game ID.
+         * @return The game ID.
+         */
+        public int getGid() {
+            return gid;
         }
 
         /**
          * Get the image resource ID of the game.
          * @return The image resource ID of the game.
          */
-        public int getImageResourceId() {
-            return imageResourceId;
+        public String getImageResource() {
+            return imageResource;
         }
 
         /**
@@ -246,6 +268,29 @@ public class AccountStoreActivity extends AppCompatActivity {
          */
         public String getDescription() {
             return description;
+        }
+    }
+
+    /**
+     * DownloadImageFromInternet class to download an image from the internet.
+     */
+    private class DownloadImageFromInternet extends AsyncTask<String, Void, Bitmap> {
+        ImageView imageView;
+        public DownloadImageFromInternet(ImageView imageView) {
+            this.imageView=imageView;
+        }
+        protected Bitmap doInBackground(String... urls) {
+            String imageURL=urls[0];
+            Bitmap bimage=null;
+            try {
+                InputStream in=new java.net.URL(imageURL).openStream();
+                bimage=BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+            }
+            return bimage;
+        }
+        protected void onPostExecute(Bitmap result) {
+            imageView.setImageBitmap(result);
         }
     }
 }

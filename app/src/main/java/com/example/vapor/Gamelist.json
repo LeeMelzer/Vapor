@@ -1,0 +1,29 @@
+{
+  "games": [
+    {
+      "image": "/drawable/header1.jpg",
+      "title": "Psychonauts2",
+      "description": "Combining quirky missions and mysterious conspiracies..."
+    },
+    {
+      "image": "/drawable/header2.jpg",
+      "title": "Obduction",
+      "description": "A new sci-fi adventure from Cyan, the creators of Myst..."
+    },
+    {
+      "image": "/drawable/header3.jpg",
+      "title": "The Talos Principle",
+      "description": "The Talos Principle is a first-person puzzle game..."
+    },
+    {
+      "image": "/drawable/header4.jpg",
+      "title": "Orcs Must Die 2",
+      "description": "Youve tossed, burned and sliced them by the thousands..."
+    },
+    {
+      "image": "/drawable/header5.jpg",
+      "title": "GTFO",
+      "description": "GTFO is an extreme cooperative horror shooter..."
+    }
+  ]
+}

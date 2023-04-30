@@ -1,13 +1,37 @@
 package com.example.vapor;
 
+import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 public class vaporDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "vapor.db";
     private static final int DATABASE_VERSION = 1;
+    private final ArrayList<byte[]> imageList = new ArrayList<>();
+    private final ArrayList<String> titleList = new ArrayList<>();
+    private final ArrayList<String> descriptionList = new ArrayList<>();
 
     // SQL statements to create database
     // creating table user_account
@@ -39,6 +63,11 @@ public class vaporDBHelper extends SQLiteOpenHelper {
                 + "long_desc text, release_date text, developer text, publisher text, total_review integer, "
                 + "p_review integer);";
 
+    private static final String CREATE_TABLE_STORE_GAMES =
+            "CREATE TABLE games (gid INTEGER " +
+                    "PRIMARY KEY AUTOINCREMENT, image text, title text, description text);";
+
+
     // creating table user_signin
     private static final String CREATE_TABLE_USER_SIGNIN =
             "create table user_signin (uid integer not null primary key, username text not null, "
@@ -54,6 +83,7 @@ public class vaporDBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_ACCOUNT);
         db.execSQL(CREATE_TABLE_LIBRARY);
         db.execSQL(CREATE_TABLE_GAME);
+        db.execSQL(CREATE_TABLE_STORE_GAMES);
         db.execSQL(CREATE_TABLE_USER_SIGNIN);
         db.execSQL("INSERT INTO user_account VALUES (1, 'RealGamer', 'Real', 'Gamer', 'real.gamer@gamers.com', '555-555-5555', '123 Gamer St', '1234567890', '007', '03', '2027');");
         db.execSQL("INSERT INTO game VALUES (1, 'https://cdn.cloudflare.steamstatic.com/steam/apps/256850720/movie480_vp9.webm?t=1631143569'," +
@@ -107,6 +137,26 @@ public class vaporDBHelper extends SQLiteOpenHelper {
                 " 'Your team of prisoners is dropped into the Rundown when a new Work Order is issued by The Warden, the mysterious entity holding you captive. The Rundown is a series of expeditions, each one taking you deeper into a decayed research facility called The Complex. You descend level by level, scavenging tools and resources that help you survive in a perilous network of tunnels where gruesome creatures lurk in every shadow. Complete all the expeditions to fulfill the Work Order and clear the Rundown.'," +
                 " 'Dec 9, 2021', '10 Chambers', '10 Chambers', 87, 40);");
         db.execSQL("INSERT INTO library VALUES (1,1);");
+        db.execSQL("INSERT INTO games VALUES  (1," +
+                "'https://cdn.cloudflare.steamstatic.com/steam/apps/607080/header.jpg?t=1678138254'," +
+                "'Psychonauts2'," +
+                "'Combining quirky missions and mysterious conspiracies...');");
+        db.execSQL("INSERT INTO games VALUES  (2," +
+                "'https://cdn.cloudflare.steamstatic.com/steam/apps/306760/header.jpg?t=1656701014'," +
+                "'Obduction'," +
+                "'A new sci-fi adventure from Cyan, the creators of Myst...');");
+        db.execSQL("INSERT INTO games VALUES  (3," +
+                "'https://cdn.cloudflare.steamstatic.com/steam/apps/257510/header.jpg?t=1669116447'," +
+                "'The Talos Principle'," +
+                "'The Talos Principle is a first-person puzzle game...');");
+        db.execSQL("INSERT INTO games VALUES  (4," +
+                "'https://cdn.cloudflare.steamstatic.com/steam/apps/201790/header.jpg?t=1631205565'," +
+                "'Orcs Must Die 2'," +
+                "'Youve tossed, burned and sliced them by the thousands...');");
+        db.execSQL("INSERT INTO games VALUES  (5," +
+                "'https://cdn.cloudflare.steamstatic.com/steam/apps/493520/header.jpg?t=1682601335'," +
+                "'GTFO'," +
+                "'GTFO is an extreme cooperative horror shooter...');");
     }
 
     @Override
@@ -118,6 +168,7 @@ public class vaporDBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS library");
         db.execSQL("DROP TABLE IF EXISTS game");
         db.execSQL("DROP TABLE IF EXISTS user_signin");
+        db.execSQL("DROP TABLE IF EXISTS games");
         onCreate(db);
     }
 }

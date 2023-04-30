@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/dark"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,6 +10,7 @@
     <TextView
         android:id="@+id/gamesHeading"
         android:text="@string/vapor_game_store"
+        android:textColor="@color/text"
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_margin="16dp"
@@ -21,6 +23,7 @@
     <TextView
         android:id="@+id/gamesDescription"
         android:text="@string/browse_our_collection_of_games"
+        android:textColor="@color/text"
         android:textSize="16sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
