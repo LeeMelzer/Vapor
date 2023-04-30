@@ -26,8 +26,6 @@ public class AccountPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_page);
-        initAccount(1);
-        /*
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             initAccount(extras.getInt("uid"));
@@ -35,7 +33,6 @@ public class AccountPage extends AppCompatActivity {
         else {
             currentAccount = new Account();
         }
-        */
         initTextChangedEvents();
         initSaveButton();
 
