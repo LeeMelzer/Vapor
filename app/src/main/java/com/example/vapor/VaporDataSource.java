@@ -36,7 +36,7 @@ public class VaporDataSource {
     public VaporDataSource(Context context) {
         dbHelper = new vaporDBHelper(context);
         open();
-        dbHelper.onUpgrade(database, 1, 1);
+        //dbHelper.onUpgrade(database, 1, 1);
         imageList = new ArrayList<>();
         titleList = new ArrayList<>();
         descriptionList = new ArrayList<>();

@@ -27,7 +27,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class vaporDBHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "vapor.db";
+    private static final String DATABASE_NAME = "vapor1.db";
     private static final int DATABASE_VERSION = 1;
     private final ArrayList<byte[]> imageList = new ArrayList<>();
     private final ArrayList<String> titleList = new ArrayList<>();
